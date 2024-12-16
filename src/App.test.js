@@ -62,5 +62,25 @@ describe('App', () => {
         cell8.click();
         cell9.click();
         expect(screen.getByText(/Game Over/i)).toBeInTheDocument();
-    })
+    });
+
+    test('Should reset the game', () => {
+        render(<App/>);
+        expect(screen.queryByText(/Reset Game/i)).not.toBeInTheDocument();
+
+        const [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9] = screen.getAllByRole('cell');
+        cell1.click();
+        cell2.click();
+        cell3.click();
+        cell4.click();
+        cell5.click();
+        cell6.click();
+        cell7.click();
+        cell8.click();
+        cell9.click();
+        const resetButton = screen.getByText(/Reset Game/i);
+        resetButton.click();
+        const cells = screen.getAllByRole('cell');
+        cells.forEach(cell => expect(cell).toBeEmptyDOMElement());
+    });
 });

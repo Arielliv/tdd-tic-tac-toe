@@ -59,6 +59,13 @@ function App() {
         }
     }
 
+    const resetGame = () => {
+        setBoard(initBoard(3));
+        setIsGameOver(false);
+        setWinner(false);
+        setCurrentPlayerSign('X');
+    }
+
     const message = winner ? `Winner is: ${winner}` : isGameOver ? 'Game Over' : `Current player is: ${currentPlayerSign}`
 
     return (<div className="App">
@@ -77,6 +84,7 @@ function App() {
                 )}
                 </tbody>
             </table>
+            {isGameOver && <button onClick={resetGame}>Reset Game</button>}
         </header>
     </div>);
 }

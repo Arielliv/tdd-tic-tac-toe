@@ -1,22 +1,107 @@
 .App {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
 }
 
 .App-header {
-    background-color: #282c34;
+    background-color: #4a90e2;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(12px + 2vmin);
     color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 td {
     width: 100px;
     height: 100px;
-    border: 1px solid green;
-    user-select: none;
+    border: 2px solid #4a90e2;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
+    user-select: none;
+}
+
+td:hover {
+    background-color: #e1f5fe;
+    color: #1976d2;
+}
+
+td:active {
+    background-color: #bbdefb;
+}
+
+.App-header h2 {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background-color: #c8e6c9;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
 }
