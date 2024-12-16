@@ -37,4 +37,30 @@ describe('App', () => {
         cell2.click();
         expect(cell2).toHaveTextContent('O');
     });
+
+    test('should show winner', () => {
+        render(<App/>);
+        const [cell1, cell2, cell3, cell4, cell5] = screen.getAllByRole('cell');
+        cell1.click();
+        cell4.click();
+        cell2.click();
+        cell5.click();
+        cell3.click();
+        expect(screen.getByText(/Winner is/i)).toBeInTheDocument();
+    });
+
+    test('should end with a tie', () => {
+        render(<App/>);
+        const [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9] = screen.getAllByRole('cell');
+        cell1.click();
+        cell2.click();
+        cell3.click();
+        cell4.click();
+        cell5.click();
+        cell6.click();
+        cell7.click();
+        cell8.click();
+        cell9.click();
+        expect(screen.getByText(/Game Over/i)).toBeInTheDocument();
+    })
 });
