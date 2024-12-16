@@ -1,30 +1,50 @@
 import './App.css';
 import {useState} from "react";
 
-const Cell = () => {
-    const [val, setVal] = useState(0);
-    return <td onClick={() => setVal((val + 1))}>{val}</td>
+const Cell = ({currentPlayerSign, toggleCurrentPlayerSign}) => {
+    const [val, setVal] = useState(null);
+
+    const onClickHandler = () => {
+        if (val === null) {
+            setVal(currentPlayerSign);
+            toggleCurrentPlayerSign();
+        }
+    }
+
+    return <td onClick={onClickHandler}>{val}</td>;
 };
 
-const Row = () => {
-    return (
-        <tr>
-            <Cell/>
-            <Cell/>
-            <Cell/>
-        </tr>
-    );
-};
+const Row = ({currentPlayerSign, toggleCurrentPlayerSign}) => (
+    <tr>
+        {[1, 2, 3].map((index) =>
+            <Cell
+                key={index}
+                currentPlayerSign={currentPlayerSign}
+                toggleCurrentPlayerSign={toggleCurrentPlayerSign}
+            />
+        )}
+    </tr>
+);
 
 function App() {
+    const [currentPlayerSign, setCurrentPlayerSign] = useState('X');
+    const toggleCurrentPlayerSign = () =>
+        currentPlayerSign === 'X' ? setCurrentPlayerSign('O') : setCurrentPlayerSign('X');
+
+
     return (<div className="App">
         <header className="App-header">
             <h1>Tic Tac Toe</h1>
+            <h2>Current player is: {currentPlayerSign}</h2>
             <table>
                 <tbody>
-                <Row/>
-                <Row/>
-                <Row/>
+                {[1, 2, 3].map((index) =>
+                    <Row
+                        key={index}
+                        currentPlayerSign={currentPlayerSign}
+                        toggleCurrentPlayerSign={toggleCurrentPlayerSign}
+                    />
+                )}
                 </tbody>
             </table>
         </header>
