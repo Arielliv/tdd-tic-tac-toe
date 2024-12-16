@@ -17,4 +17,6 @@ td {
     width: 100px;
     height: 100px;
     border: 1px solid green;
+    user-select: none;
+    cursor: pointer;
 }
